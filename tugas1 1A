@@ -1,0 +1,70 @@
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node first;
+    Node last;
+
+    // Konstruktor untuk inisialisasi linked list
+    LinkedList() {
+        first = null;
+        last = null;
+    }
+
+    // Menambahkan elemen di akhir linked list
+    void add(int data) {
+        Node newNode = new Node(data);
+        if (first == null) {
+            first = last = newNode;
+        } else {
+            last.next = newNode;
+            last = newNode;
+        }
+    }
+
+    // Menambahkan semua elemen array ke linked list
+    void addAll(int[] arr) {
+        for (int num : arr) {
+            add(num);
+        }
+    }
+
+    // Menampilkan elemen dalam linked list
+    void display() {
+        Node current = first;
+        while (current != null) {
+            System.out.print(current.data + " -> ");
+            current = current.next;
+        }
+        System.out.println("null");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+
+        // Inisialisasi linked list awal (before)
+        list.add(2);
+        list.add(23);
+
+        // Menampilkan sebelum addAll
+        System.out.println("Sebelum addAll:");
+        list.display();
+
+        // Menambahkan elemen dari array
+        int[] arr = {80, 7, 12};
+        list.addAll(arr);
+
+        // Menampilkan setelah addAll
+        System.out.println("Setelah addAll:");
+        list.display();
+    }
+}
